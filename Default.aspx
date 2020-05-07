@@ -8,7 +8,7 @@
             <div class="animated fadeIn">
                 <!-- Widgets  -->
                 <div class="row">
-                    <h1>Vimal</h1>
+                    <h1>Prerna</h1>
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
