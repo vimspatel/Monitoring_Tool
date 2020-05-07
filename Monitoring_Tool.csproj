@@ -114,6 +114,7 @@
     <Content Include="assets\js\vmap.sampledata.js" />
     <Content Include="assets\js\widgets.js" />
     <Content Include="assets\scss\style.css" />
+    <Content Include="db_growth.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="HTML\charts-chartjs.html" />
     <Content Include="HTML\charts-flot.html" />
@@ -165,6 +166,13 @@
     </Compile>
     <Compile Include="admin_monitor_sp.aspx.designer.cs">
       <DependentUpon>admin_monitor_sp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="db_growth.aspx.cs">
+      <DependentUpon>db_growth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="db_growth.aspx.designer.cs">
+      <DependentUpon>db_growth.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
