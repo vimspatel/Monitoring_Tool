@@ -13,5 +13,15 @@ namespace Monitoring_Tool
         {
 
         }
+
+        protected void SiteMapPath_breadcrumb_ItemCreated(object sender, SiteMapNodeItemEventArgs e)
+        {
+            //hidding dummy root and pathseperator dynamically
+            if (e.Item.ItemType == SiteMapNodeItemType.Root ||
+                e.Item.ItemType == SiteMapNodeItemType.PathSeparator && e.Item.ItemIndex == 1)
+            {
+                e.Item.Visible = false;
+            }
+        }
     }
 }

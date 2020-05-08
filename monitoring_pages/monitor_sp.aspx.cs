@@ -108,6 +108,7 @@ namespace Monitoring_Tool
                             sb.Append("</div>");
                             sb.Append("</div>");
                             sb.Append("</div>");
+                            sb.Append("</div>");
 
                         }
 
@@ -227,6 +228,8 @@ namespace Monitoring_Tool
                             sb.Append("</div>");
                             sb.Append("</div>");
                             sb.Append("</div>");
+                            sb.Append("</div>");
+
 
                         }
 

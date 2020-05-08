@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="DummyRoot">
+		<siteMapNode url="~/Default.aspx" title="Home" description="Home Page" >
+			<siteMapNode url="~/admin_monitor_sp.aspx" title="Monitoring Admin" description="Admin page to add and remove services and process for status" />
+			<siteMapNode url="~/monitoring_pages/stopped_sp.aspx" title="Stopped Services" description="Stopped Services and Process">
+				<siteMapNode url ="Consulting.aspx" title="Consulting" description="Consulting Page"></siteMapNode>
+				<siteMapNode url ="Outsourcing.aspx" title="Outsourcing" description="Outsourcing Page"></siteMapNode>
+			</siteMapNode>
+			<siteMapNode url="~/monitoring_pages/monitor_sp.aspx" title="Services and Process Status" description="Services and Process Status" />
+		</siteMapNode>		
+	</siteMapNode>	
+</siteMap>
