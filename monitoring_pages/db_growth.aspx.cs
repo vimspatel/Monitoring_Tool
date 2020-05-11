@@ -292,6 +292,7 @@ namespace Monitoring_Tool
 
                             lt_DBGrowthChart.Text = div_dbgrowthchart;
                             lt_script_DbGrowthChart.Text = dbgrowthchart;
+                            Literal1.Text = "Vimal";
                         }
                         //// For each table in the DataSet, print the row values.
                         //foreach (DataTable table in dt.Tables)

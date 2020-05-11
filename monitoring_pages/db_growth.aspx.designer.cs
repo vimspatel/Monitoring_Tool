@@ -141,6 +141,15 @@ namespace Monitoring_Tool
         protected global::System.Web.UI.WebControls.Literal lt_DBGrowthChart;
 
         /// <summary>
+        /// Literal1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal1;
+
+        /// <summary>
         /// lt_script_DbGrowthChart control.
         /// </summary>
         /// <remarks>

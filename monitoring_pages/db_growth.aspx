@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
     <!-- Bootstrap DatePicker -->
-    <link href="~/assets/custom/glyphiconicon.css" rel="stylesheet" />
-    <link href="~/assets/custom/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="../assets/custom/glyphiconicon.css" rel="stylesheet" />
+    <link href="../assets/custom/bootstrap-datetimepicker.css" rel="stylesheet" />
     <%--<link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.css">--%>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
@@ -96,7 +96,7 @@
                             <asp:Label ID="lbl_filetype" runat="server" class="form-control-label">FileType</asp:Label>
                         </div>
                         <div class="col-6 col-md-3">
-                            <asp:DropDownList ID="ddl_filetype" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_filetype_SelectedIndexChanged"></asp:DropDownList>
+                            <asp:DropDownList ID="ddl_filetype" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddl_filetype_SelectedIndexChanged"></asp:DropDownList>
                         </div>
                     </div>
                 </div>
@@ -109,17 +109,6 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
-
-
-
-
-
-
-
-
-
-
-
     <!-- Content -->
     <div class="content">
         <div class="animated fadeIn">
@@ -127,101 +116,7 @@
 
 
                 <asp:Literal ID="lt_DBGrowthChart" runat="server"></asp:Literal>
-
-
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="mb-3">Yearly Sales </h4>
-                            <canvas id="sales-chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <!-- /# column -->
-
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="mb-3">Team Commits </h4>
-                            <canvas id="team-chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <!-- /# column -->
-
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="mb-3">Bar chart </h4>
-                            <canvas id="barChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <!-- /# column -->
-
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="mb-3">Rader chart </h4>
-                            <canvas id="radarChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <!-- /# column -->
-
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="mb-3">Line Chart </h4>
-                            <canvas id="lineChart"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="mb-3">Doughut Chart </h4>
-                                <canvas id="doughutChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-
-                </div>
-                <!-- /# column -->
-
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="mb-3">Pie Chart </h4>
-                            <canvas id="pieChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <!-- /# column -->
-
-
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="mb-3">Polar Chart </h4>
-                            <canvas id="polarChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <!-- /# column -->
-
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="mb-3">Single Bar Chart </h4>
-                            <canvas id="singelBarChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <!-- /# column -->
-
-
+                <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
             </div>
 
@@ -233,16 +128,6 @@
     <!-- Scripts -->
 
     <asp:Literal ID="lt_script_DbGrowthChart" runat="server"></asp:Literal>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    <script src="~/assets/js/main.js"></script>
-    <!--  Chart js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
-    <script src="~/assets/js/init/chartjs-init.js"></script>
-    <!--Flot Chart-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
+    
+ 
 </asp:Content>
