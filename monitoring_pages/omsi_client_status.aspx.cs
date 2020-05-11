@@ -112,11 +112,13 @@ namespace Monitoring_Tool.monitoring_pages
                             }
 
                         }
-
+                        streamReader1.ReadToEnd();
                         //}
                     }
 
                 }
+
+                streamReader.ReadToEnd();
             }
             htmlstring += "<hr>";
             htmlstring += "<p class='mb-0'>CP Client is " + cp_status +"  "+cp_log_time + "</p>";
