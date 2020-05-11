@@ -157,10 +157,11 @@
     <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="monitoring_pages\omsi_client_status.aspx" />
     <Content Include="obj\Debug\Monitoring_Tool.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Monitoring_Tool.dll" />
     <Content Include="obj\Debug\Monitoring_Tool.pdb" />
-    <Content Include="monitoring_pages\omsi_client_status.aspx" />
+    <Content Include="monitoring_pages\omsi_client_status_nomaster.aspx" />
     <Content Include="monitoring_pages\db_growth.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="HTML\charts-chartjs.html" />
@@ -279,6 +280,13 @@
     </Compile>
     <Compile Include="monitoring_pages\omsi_client_status.aspx.designer.cs">
       <DependentUpon>omsi_client_status.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="monitoring_pages\omsi_client_status_nomaster.aspx.cs">
+      <DependentUpon>omsi_client_status_nomaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="monitoring_pages\omsi_client_status_nomaster.aspx.designer.cs">
+      <DependentUpon>omsi_client_status_nomaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="monitoring_pages\db_growth.aspx.cs">
       <DependentUpon>db_growth.aspx</DependentUpon>

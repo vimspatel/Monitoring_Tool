@@ -9,19 +9,19 @@ using System.Web.UI.HtmlControls;
 using System.Security.AccessControl;
 using System.Security.Principal;
 
-namespace Monitoring_Tool.monitoring_pages
+namespace Monitoring_Tool
 {
-    public partial class omsi_client_status : System.Web.UI.Page
+    public partial class devread : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             //getlogdatetime("Desktop-gkoflpn");
             getpostNjdbc_url("Desktop-gkoflpn");
             getpostNjdbc_url("Desktop-gkoflpn");
 
         }
-
+      
         private void getpostNjdbc_url(string servername)
         {
             //calling method for 
@@ -29,35 +29,35 @@ namespace Monitoring_Tool.monitoring_pages
             string[] cp_status_array = cp_status_log.Split('_');
             var cp_status = cp_status_array[0];
             var cp_log_time = cp_status_array[1];
-
+         
             var alertclass = "alert-success";
-            if (cp_status == "Down")
-            {
-                //adding css class 
-                alertclass = "alert-danger";
-                cp_status = "<span class='badge badge-pill badge-danger'>Down</span>";
-                cp_log_time = "Last modified date o log file : " + cp_log_time;
-            }
-            else
-            {
-                alertclass = "alert-success";
-                cp_status = "<span class='badge badge-pill badge-success'>Running</span>";
-            }
+            if (cp_status == "Down") 
+                {   
+                    //adding css class 
+                    alertclass = "alert-danger";
+                    cp_status = "<span class='badge badge-pill badge-danger'>Down</span>";
+                    cp_log_time = "Last modified date o log file : " + cp_log_time; 
+                }
+            else 
+                { 
+                    alertclass = "alert-success";
+                    cp_status = "<span class='badge badge-pill badge-success'>Running</span>";
+                }
 
             //lblgetlogdate.Text = cp_status_log;
             string inputString;
-
-            string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "ini", "CPClientProperties.ini" };
+            
+            string[] paths = { @"\\",servername,"D$", "OMSI-Client85", "ini", "CPClientProperties.ini" };
             string path = Path.Combine(paths);
             FileInfo fi = new FileInfo(path);
 
             //html string 
             String htmlstring = "";
-            htmlstring = "<div class='alert " + alertclass + "' role='alert'>";
-            htmlstring += "<h3 class='alert-heading'>OMSI Client Parameters: <mark>\"" + servername + "\"</mark></h3>";
+            htmlstring = "<div class='alert "+ alertclass + "' role='alert'>";
+            htmlstring += "<h3 class='alert-heading'>OMSI Client Parameters: <mark>\"" + servername+ "\"</mark></h3>";
             htmlstring += "<div class='mt-4'>";
-
-
+            
+            
             using (StreamReader streamReader = fi.OpenText())
             {
                 inputString = streamReader.ReadLine();
@@ -79,57 +79,57 @@ namespace Monitoring_Tool.monitoring_pages
                         //for (int count = 1; count <= lineNumber; count++)
                         //{
 
-                        // Open the file to read from.
+                            // Open the file to read from.
 
-                        string[] readText = File.ReadAllLines(path);
-                        foreach (string s in readText)
-                        {
-
-                            string sub1 = "POST_URL";
-                            string sub2 = "JDBC_URL";
-                            string comstring = "#";
-
-                            if (!s.Contains(comstring) || !s.Contains(""))
+                            string[] readText = File.ReadAllLines(path); 
+                            foreach (string s in readText)
                             {
-                                if (s.Contains(sub1))
-
+                                
+                                string sub1 = "POST_URL";
+                                string sub2 = "JDBC_URL";
+                                string comstring = "#";
+                                
+                                if (!s.Contains(comstring) || !s.Contains(""))
                                 {
-                                    htmlstring += "<p>" + s.ToString() + "</p>";
-                                    //lbl_POST_URL.Text = s.ToString() + "zz";
-                                    inputString = streamReader.ReadLine();
-                                }
-                                if (s.Contains(sub2))
+                                    if (s.Contains(sub1))
 
-                                {
+                                    {
+                                        htmlstring += "<p>"+ s.ToString() +"</p>";
+                                        //lbl_POST_URL.Text = s.ToString() + "zz";
+                                        inputString = streamReader.ReadLine();
+                                    }
+                                    if (s.Contains(sub2))
 
-                                    htmlstring += "<p>" + s.ToString() + "</p>";
-                                    //lbl_JDBC_URL.Text = s.ToString() + "zz";
-                                    inputString = streamReader.ReadLine();
+                                    {
+
+                                        htmlstring += "<p>" + s.ToString() + "</p>";
+                                        //lbl_JDBC_URL.Text = s.ToString() + "zz";
+                                        inputString = streamReader.ReadLine();
+                                    }
                                 }
+
                             }
-
-                        }
 
                         //}
                     }
-
+                  
                 }
             }
             htmlstring += "<hr>";
-            htmlstring += "<p class='mb-0'>CP Client is " + cp_status + cp_log_time + "</p>";
+            htmlstring += "<p class='mb-0'>CP Client is "+ cp_status + cp_log_time+"</p>";
             htmlstring += "</div>";
             htmlstring += "</div>";
             //Append the HTML string to Placeholder.
             PlaceHolder_htmlstring.Controls.Add(new Literal { Text = htmlstring });
         }
 
-
+        
         private static string getlogdatetime(string servername)
         {
             var cp_status = "";
             string inputString;
-
-            string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "log", "omsi-client.log" };
+            
+            string[] paths = { @"\\",servername,"D$", "OMSI-Client85", "log", "omsi-client.log" };
             string path = Path.Combine(paths);
 
             if (File.Exists(path))
@@ -141,7 +141,7 @@ namespace Monitoring_Tool.monitoring_pages
                 //this file dont exists
             }
 
-            FileInfo fi = new FileInfo(path);
+           FileInfo fi = new FileInfo(path);
             using (StreamReader streamReader = fi.OpenText())
             {
                 inputString = streamReader.ReadLine();
@@ -173,17 +173,17 @@ namespace Monitoring_Tool.monitoring_pages
                         TimeSpan t = (thisday - last_log_datetime);
                         //lbl_cp_status.Text = t.Minutes.ToString();
 
-
+                        
                         if (t.Minutes > 5)
                         {
-
+                            
                             //lbl_cp_status.Text = "CP Client is Down. Last mondified date of log file: " + last_log_datetime;
-                            cp_status = "Down_" + last_log_datetime;
+                             cp_status = "Down_" + last_log_datetime;
                         }
                         else
                         {
                             //lbl_cp_status.Text = "CP Client is Running. Last mondified date of log file: " + last_log_datetime;
-                            cp_status = "Running_" + last_log_datetime;
+                             cp_status = "Running_" + last_log_datetime;
                         }
                     }
                 }
@@ -192,7 +192,7 @@ namespace Monitoring_Tool.monitoring_pages
             return cp_status;
         }
 
-
+       
         private void copyfiles()
         {
             string fileName = "file.txt";
@@ -238,7 +238,7 @@ namespace Monitoring_Tool.monitoring_pages
             else
             {
                 //lbl_copystatus.Text = "Source path does not exist!";
-
+                
             }
 
         }
@@ -249,5 +249,6 @@ namespace Monitoring_Tool.monitoring_pages
             getlogdatetime("Desktop-gkoflpn");
             getpostNjdbc_url("Desktop-gkoflpn");
         }
+
     }
 }
