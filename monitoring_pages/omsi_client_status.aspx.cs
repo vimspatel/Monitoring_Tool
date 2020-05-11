@@ -17,10 +17,10 @@ namespace Monitoring_Tool.monitoring_pages
         {
 
             //getlogdatetime("Desktop-gkoflpn");
-            //getpostNjdbc_url("Desktop-gkoflpn");
-            getpostNjdbc_url("totpsps01");
-            getpostNjdbc_url("totpsappdev01"); 
-            getpostNjdbc_url("totpsapptst01");
+            getpostNjdbc_url("Desktop-gkoflpn");
+            //getpostNjdbc_url("totpsps01");
+            //getpostNjdbc_url("totpsappdev01"); 
+            //getpostNjdbc_url("totpsapptst01");
 
 
         }

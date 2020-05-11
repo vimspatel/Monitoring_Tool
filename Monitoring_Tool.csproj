@@ -158,6 +158,7 @@
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="monitoring_pages\omsi_client_status.aspx" />
+    <Content Include="monitoring_pages\WebForm1.aspx" />
     <Content Include="obj\Debug\Monitoring_Tool.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Monitoring_Tool.dll" />
     <Content Include="obj\Debug\Monitoring_Tool.pdb" />
@@ -315,6 +316,13 @@
     </Compile>
     <Compile Include="monitoring_pages\monitor_sp.aspx.designer.cs">
       <DependentUpon>monitor_sp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="monitoring_pages\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="monitoring_pages\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="monitoring_pages\stopped_sp.aspx.cs">
