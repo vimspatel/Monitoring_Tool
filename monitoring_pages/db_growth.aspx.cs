@@ -50,20 +50,20 @@ namespace Monitoring_Tool
         {
             string query = "Select Distinct DB_Server_Name,ServerID From [VP_DB_SERVER_LIST]";
             BindDropDownList(ddl_servername, query, "DB_SERVER_NAME", "ServerID", "Select Server");
-            //ddlStates.Enabled = false;
-            //ddlCities.Enabled = false;
-            //ddlStates.Items.Insert(0, new ListItem("Select State", "0"));
-            //ddlCities.Items.Insert(0, new ListItem("Select City", "0"));
+            ddl_dbname.Enabled = false;
+            ddl_filetype.Enabled = false;
+            ddl_dbname.Items.Insert(0, new ListItem("Select Database", "0"));
+            ddl_filetype.Items.Insert(0, new ListItem("Select Filetype", "0"));
         }
 
         protected void ddl_serverName_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddl_dbname.Enabled = false;
-            //ddlCities.Enabled = false;
+            //ddlNo Data to Display.Enabled = false;
             ddl_dbname.Items.Clear();
-            //ddlCities.Items.Clear();
+            //ddl_filetype.Items.Clear();
             ddl_dbname.Items.Insert(0, new ListItem("Select Database", "0"));
-            //ddlCities.Items.Insert(0, new ListItem("Select City", "0"));
+            //ddl_filetype.Items.Insert(0, new ListItem("Select Filetype", "0"));
             int serverId = int.Parse(ddl_servername.SelectedItem.Value);
             if (serverId > 0)
             {
@@ -98,20 +98,20 @@ namespace Monitoring_Tool
                 var enddate = Convert.ToDateTime(txt_enddate.Text).ToString("MM/dd/yyyy");
                 ShowDBGrowths(serverid, dbname, startdate, enddate, null, null);
             }
-            else if(txtstartTime.Text != "" && txtendTime.Text != "")
+            else if(txt_startTime.Text != "" && txt_endTime.Text != "")
             {
                 // filter with Time only
-                var starttime = Convert.ToDateTime(txtstartTime.Text).ToString("HH:mm");
-                var endtime = Convert.ToDateTime(txtendTime.Text).ToString("HH:mm");
+                var starttime = Convert.ToDateTime(txt_startTime.Text).ToString("HH:mm");
+                var endtime = Convert.ToDateTime(txt_endTime.Text).ToString("HH:mm");
                 ShowDBGrowths(serverid, dbname, null, null, starttime, endtime);
             }
-            else if(txt_startdate.Text != "" && txt_enddate.Text != "" && txtstartTime.Text != "" && txtendTime.Text != "")
+            else if(txt_startdate.Text != "" && txt_enddate.Text != "" && txt_startTime.Text != "" && txt_endTime.Text != "")
             {
                 // filter with Date and time 
                 var startdate = Convert.ToDateTime(txt_startdate.Text).ToString("MM/dd/yyyy");
                 var enddate = Convert.ToDateTime(txt_enddate.Text).ToString("MM/dd/yyyy");
-                var starttime = Convert.ToDateTime(txtstartTime.Text).ToString("HH:mm");
-                var endtime = Convert.ToDateTime(txtendTime.Text).ToString("HH:mm");
+                var starttime = Convert.ToDateTime(txt_startTime.Text).ToString("HH:mm");
+                var endtime = Convert.ToDateTime(txt_endTime.Text).ToString("HH:mm");
                 ShowDBGrowths(serverid, dbname, startdate, enddate, starttime, endtime);
             }
             else
@@ -165,7 +165,7 @@ namespace Monitoring_Tool
                                 div_dbgrowthchart += "<div class='col -lg-6'>";
                                     div_dbgrowthchart += "<div class='card'>";
                                         div_dbgrowthchart += "<div class='card-body'>";
-                                                div_dbgrowthchart += "<h4 class='mb-3'>Disk Growth</h4>";
+                                                div_dbgrowthchart += "<h4 class='mb-3'>Database Growth</h4>";
                                                 div_dbgrowthchart += "<canvas id=\"db_growth-chart\"></canvas>";
                                             div_dbgrowthchart += "</div>";
                                     div_dbgrowthchart += "</div>";
@@ -292,7 +292,6 @@ namespace Monitoring_Tool
 
                             lt_DBGrowthChart.Text = div_dbgrowthchart;
                             lt_script_DbGrowthChart.Text = dbgrowthchart;
-                            Literal1.Text = "Vimal";
                         }
                         //// For each table in the DataSet, print the row values.
                         //foreach (DataTable table in dt.Tables)
@@ -320,6 +319,17 @@ namespace Monitoring_Tool
                     }
                 }
             }
+        }
+
+        protected void btn_dbgrowthchart_reset_Click(object sender, EventArgs e)
+        {
+            ddl_servername.SelectedIndex = 0;
+            ddl_dbname.SelectedIndex = 0;
+            ddl_filetype.SelectedIndex = 0;
+            txt_startdate.Text = string.Empty;
+            txt_enddate.Text = string.Empty;
+            txt_startTime.Text = string.Empty;
+            txt_endTime.Text = string.Empty;
         }
     }
 }

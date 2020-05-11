@@ -8,6 +8,7 @@
 				<siteMapNode url ="Outsourcing.aspx" title="Outsourcing" description="Outsourcing Page"></siteMapNode>
 			</siteMapNode>
 			<siteMapNode url="~/monitoring_pages/monitor_sp.aspx" title="Services and Process Status" description="Services and Process Status" />
+			<siteMapNode url="~/monitoring_pages/omsi_client_status.aspx" title="OMSI Client" description="OMSI Carrier Point" />
 		</siteMapNode>		
 	</siteMapNode>	
 </siteMap>

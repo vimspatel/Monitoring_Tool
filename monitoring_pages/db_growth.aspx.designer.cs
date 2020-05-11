@@ -78,22 +78,22 @@ namespace Monitoring_Tool
         protected global::System.Web.UI.WebControls.DropDownList ddl_dbname;
 
         /// <summary>
-        /// txtstartTime control.
+        /// txt_startTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtstartTime;
+        protected global::System.Web.UI.WebControls.TextBox txt_startTime;
 
         /// <summary>
-        /// txtendTime control.
+        /// txt_endTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtendTime;
+        protected global::System.Web.UI.WebControls.TextBox txt_endTime;
 
         /// <summary>
         /// lbl_filetype control.
@@ -139,15 +139,6 @@ namespace Monitoring_Tool
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lt_DBGrowthChart;
-
-        /// <summary>
-        /// Literal1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal1;
 
         /// <summary>
         /// lt_script_DbGrowthChart control.
