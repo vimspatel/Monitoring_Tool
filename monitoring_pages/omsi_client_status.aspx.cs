@@ -116,7 +116,7 @@ namespace Monitoring_Tool.monitoring_pages
                 }
             }
             htmlstring += "<hr>";
-            htmlstring += "<p class='mb-0'>CP Client is " + cp_status + cp_log_time + "</p>";
+            htmlstring += "<p class='mb-0'>CP Client is " + cp_status +"  "+cp_log_time + "</p>";
             htmlstring += "</div>";
             htmlstring += "</div>";
             //Append the HTML string to Placeholder.

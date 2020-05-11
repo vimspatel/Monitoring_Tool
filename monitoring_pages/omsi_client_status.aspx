@@ -2,10 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="alerts">
-                        <div class="row">
+    
                             <div class="col-md-12">
-                                <div class="card">
+                                <div class="card alerts">
                                    <%-- <div class="card-header">
                                         <strong class="card-title">Contents</strong>
                                     </div>--%>
@@ -44,11 +43,8 @@
                                         </div>--%>
                                     </div>
                                 </div>
-
-
-
                             </div>
-                        </div>
-                    </div>
+                      
+                   
                     <!-- .alerts -->
 </asp:Content>
