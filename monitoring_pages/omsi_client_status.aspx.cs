@@ -50,7 +50,8 @@ namespace Monitoring_Tool.monitoring_pages
             //lblgetlogdate.Text = cp_status_log;
             string inputString;
 
-            string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "ini", "CPClientProperties.ini" };
+          //  string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "ini", "CPClientProperties.ini" };
+            string[] paths = { @"\\", servername, "OMSI-Client85", "ini", "CPClientProperties.ini" };
             string path = Path.Combine(paths);
             FileInfo fi = new FileInfo(path);
 
@@ -134,67 +135,72 @@ namespace Monitoring_Tool.monitoring_pages
             var cp_status = "";
             string inputString;
 
-            string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "log", "omsi-client.log" };
+
+           // string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "log", "omsi-client.log" };
+
+            string[] paths = { @"\\", servername, "OMSI-Client85", "log", "omsi-client.log" };
             string path = Path.Combine(paths);
 
             if (File.Exists(path))
             {
                 //this file exists
+                FileInfo fi = new FileInfo(path);
+                using (StreamReader streamReader = fi.OpenText())
+                {
+                    inputString = streamReader.ReadLine();
+                    if (inputString != null)
+                    {
+                        string line, noOfLines;
+                        int lineNumber = 0;
+                        using (StreamReader streamReader1 = new StreamReader(path))
+                        {
+                            /*count for the number of lines*/
+                            while ((line = streamReader1.ReadLine()) != null)
+                                lineNumber++;
+
+                            noOfLines = lineNumber.ToString();
+                            //Number of line
+                            //lblomsi_clinetlog.Text = noOfLines;
+
+
+                            // Get the current date.
+                            DateTime thisday = DateTime.Now;
+                            //lblgetdate.Text = thisday.ToString();
+
+                            //Get Last log datetime.
+                            string[] readText = File.ReadAllLines(path);
+                            DateTime last_log_datetime = DateTime.Parse(readText.LastOrDefault().Substring(0, 19));
+                            //lblgetlogdate.Text = last_log_datetime.ToString();
+
+                            //Get Difference of datetime
+                            TimeSpan t = (thisday - last_log_datetime);
+                            //lbl_cp_status.Text = t.Minutes.ToString();
+
+
+                            if (t.Minutes > 5)
+                            {
+
+                                //lbl_cp_status.Text = "CP Client is Down. Last mondified date of log file: " + last_log_datetime;
+                                cp_status = "Down_" + last_log_datetime;
+                            }
+                            else
+                            {
+                                //lbl_cp_status.Text = "CP Client is Running. Last mondified date of log file: " + last_log_datetime;
+                                cp_status = "Running_" + last_log_datetime;
+                            }
+                        }
+                    }
+                }
+
+                return cp_status;
             }
             else
             {
                 //this file dont exists
             }
+            
 
-            FileInfo fi = new FileInfo(path);
-            using (StreamReader streamReader = fi.OpenText())
-            {
-                inputString = streamReader.ReadLine();
-                if (inputString != null)
-                {
-                    string line, noOfLines;
-                    int lineNumber = 0;
-                    using (StreamReader streamReader1 = new StreamReader(path))
-                    {
-                        /*count for the number of lines*/
-                        while ((line = streamReader1.ReadLine()) != null)
-                            lineNumber++;
-
-                        noOfLines = lineNumber.ToString();
-                        //Number of line
-                        //lblomsi_clinetlog.Text = noOfLines;
-
-
-                        // Get the current date.
-                        DateTime thisday = DateTime.Now;
-                        //lblgetdate.Text = thisday.ToString();
-
-                        //Get Last log datetime.
-                        string[] readText = File.ReadAllLines(path);
-                        DateTime last_log_datetime = DateTime.Parse(readText.LastOrDefault().Substring(0, 19));
-                        //lblgetlogdate.Text = last_log_datetime.ToString();
-
-                        //Get Difference of datetime
-                        TimeSpan t = (thisday - last_log_datetime);
-                        //lbl_cp_status.Text = t.Minutes.ToString();
-
-
-                        if (t.Minutes > 5)
-                        {
-
-                            //lbl_cp_status.Text = "CP Client is Down. Last mondified date of log file: " + last_log_datetime;
-                            cp_status = "Down_" + last_log_datetime;
-                        }
-                        else
-                        {
-                            //lbl_cp_status.Text = "CP Client is Running. Last mondified date of log file: " + last_log_datetime;
-                            cp_status = "Running_" + last_log_datetime;
-                        }
-                    }
-                }
-            }
-
-            return cp_status;
+           
         }
 
 

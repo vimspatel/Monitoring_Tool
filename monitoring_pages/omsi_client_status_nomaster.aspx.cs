@@ -17,8 +17,8 @@ namespace Monitoring_Tool
         {
             
             //getlogdatetime("Desktop-gkoflpn");
-            getpostNjdbc_url("Desktop-gkoflpn");
-            getpostNjdbc_url("Desktop-gkoflpn");
+            //getpostNjdbc_url("Desktop-gkoflpn");
+            //getpostNjdbc_url("Desktop-gkoflpn");
 
         }
       
@@ -195,8 +195,8 @@ namespace Monitoring_Tool
        
         private void copyfiles()
         {
-            string fileName = "file.txt";
-            string sourcePath = @"D:\test\";
+            string fileName = "omsi-client.log";
+            string sourcePath = @"\\totpsappdev01\OMSI-Client85\log";
             //string targetPath = @"D:\test\SubDir";
             string targetPath = HttpContext.Current.Server.MapPath("~/Temp_SubDir");
 
@@ -246,8 +246,8 @@ namespace Monitoring_Tool
         protected void btncopy_Click(object sender, EventArgs e)
         {
             copyfiles();
-            getlogdatetime("Desktop-gkoflpn");
-            getpostNjdbc_url("Desktop-gkoflpn");
+            //getlogdatetime("Desktop-gkoflpn");
+            //getpostNjdbc_url("Desktop-gkoflpn");
         }
 
     }

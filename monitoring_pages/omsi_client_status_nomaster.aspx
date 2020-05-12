@@ -32,7 +32,7 @@
     <form id="form1" runat="server">
         
         <!-- Left Panel -->
-
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="btncopy_Click" />
         <aside id="left-panel" class="left-panel">
             <nav class="navbar navbar-expand-sm navbar-default">
 
