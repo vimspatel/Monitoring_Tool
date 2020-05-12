@@ -15,20 +15,20 @@ namespace Monitoring_Tool.monitoring_pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //getlogdatetime("Desktop-gkoflpn");
-            getpostNjdbc_url("Desktop-gkoflpn");
-            //getpostNjdbc_url("totpsps01");
-            //getpostNjdbc_url("totpsappdev01"); 
-            //getpostNjdbc_url("totpsapptst01");
-
+            // call and pass servername to read log file and jdbc urls
+            //getpostNjdbc_url(serverName , properties path,log path)
+              getpostNjdbc_url("Desktop-gkoflpn", "D$\\OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\logs\\omsi-client.log");
+            //getpostNjdbc_url("totpsps01", "D$\\OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\log\\omsi-client.log");
+            //getpostNjdbc_url("totpsappdev01", "D$\\OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\log\\omsi-client.log"); 
+            //getpostNjdbc_url("totpsapptst01", "D$\\OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\log\\omsi-client.log");
 
         }
 
-        private void getpostNjdbc_url(string servername)
+        private void getpostNjdbc_url(string servername, string pro_path, string log_path)
         {
-            //calling method for 
-            string cp_status_log = getlogdatetime(servername);
+            //calling method to get logtime from log file
+            string cp_status_log = getlogdatetime(servername,log_path);
+
             string[] cp_status_array = cp_status_log.Split('_');
             var cp_status = cp_status_array[0];
             var cp_log_time = cp_status_array[1];
@@ -39,90 +39,125 @@ namespace Monitoring_Tool.monitoring_pages
                 //adding css class 
                 alertclass = "alert-danger";
                 cp_status = "<span class='badge badge-pill badge-danger'>Down</span>";
-                cp_log_time = "Last modified date o log file : " + cp_log_time;
+                cp_log_time = "Last modified date of log file : " + cp_log_time;
             }
-            else
+            else if (cp_status == "Running")
             {
                 alertclass = "alert-success";
                 cp_status = "<span class='badge badge-pill badge-success'>Running</span>";
             }
+            else
+            {
+                alertclass = "alert-danger";
+                cp_status = "Log file not found!";
+                
+            }
+
 
             //lblgetlogdate.Text = cp_status_log;
+            //Build html string
             string inputString;
 
-          //  string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "ini", "CPClientProperties.ini" };
-            string[] paths = { @"\\", servername, "OMSI-Client85", "ini", "CPClientProperties.ini" };
+            string[] paths = { @"\\", servername, pro_path};
+
+            //string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "ini", "CPClientProperties.ini" };
+            //string[] paths = { @"\\", servername, "OMSI-Client85", "ini", "CPClientProperties.ini" };
             string path = Path.Combine(paths);
             FileInfo fi = new FileInfo(path);
 
             //html string 
             String htmlstring = "";
-            htmlstring = "<div class='alert " + alertclass + "' role='alert'>";
+            htmlstring += path;
+            htmlstring += "<div class='alert " + alertclass + "' role='alert'>";
             htmlstring += "<h3 class='alert-heading'>OMSI Client Parameters: <mark>\"" + servername + "\"</mark></h3>";
             htmlstring += "<div class='mt-4'>";
 
-
-            using (StreamReader streamReader = fi.OpenText())
+            if (File.Exists(path))
             {
-                inputString = streamReader.ReadLine();
-
-                if (inputString != null)
+                //this file exists
+                using (StreamReader streamReader = fi.OpenText())
                 {
-                    string line, noOfLines;
-                    int lineNumber = 0;
-                    using (StreamReader streamReader1 = new StreamReader(path))
+                    inputString = streamReader.ReadLine();
+
+                    if (inputString != null)
                     {
-                        /*count for the number of lines*/
-                        while ((line = streamReader1.ReadLine()) != null)
-                            lineNumber++;
-
-                        noOfLines = lineNumber.ToString();
-                        //lbl_CPClientLine.Text = noOfLines;
-
-                        /*loops according to the number of lines*/
-                        //for (int count = 1; count <= lineNumber; count++)
-                        //{
-
-                        // Open the file to read from.
-
-                        string[] readText = File.ReadAllLines(path);
-                        foreach (string s in readText)
+                        string line, noOfLines;
+                        int lineNumber = 0;
+                        using (StreamReader streamReader1 = new StreamReader(path))
                         {
+                            /*count for the number of lines*/
+                            while ((line = streamReader1.ReadLine()) != null)
+                                lineNumber++;
 
-                            string sub1 = "POST_URL";
-                            string sub2 = "JDBC_URL";
-                            string comstring = "#";
+                            noOfLines = lineNumber.ToString();
+                            //lbl_CPClientLine.Text = noOfLines;
 
-                            if (!s.Contains(comstring) || !s.Contains(""))
+                            /*loops according to the number of lines*/
+                            //for (int count = 1; count <= lineNumber; count++)
+                            //{
+
+                            // Open the file to read from.
+
+                            string[] readText = File.ReadAllLines(path);
+                            foreach (string s in readText)
                             {
-                                if (s.Contains(sub1))
 
+                                string sub1 = "POST_URL";
+                                string sub2 = "JDBC_URL";
+                                string comstring = "#";
+
+                                if (!s.Contains(comstring) || !s.Contains(""))
                                 {
-                                    htmlstring += "<p>" + s.ToString() + "</p>";
-                                    //lbl_POST_URL.Text = s.ToString() + "zz";
-                                    inputString = streamReader.ReadLine();
-                                }
-                                if (s.Contains(sub2))
+                                    if (s.Contains(sub1))
 
-                                {
+                                    {
+                                        htmlstring += "<p>" + s.ToString() + "</p>";
+                                        //lbl_POST_URL.Text = s.ToString() + "zz";
+                                        inputString = streamReader.ReadLine();
+                                    }
+                                    if (s.Contains(sub2))
 
-                                    htmlstring += "<p>" + s.ToString() + "</p>";
-                                    //lbl_JDBC_URL.Text = s.ToString() + "zz";
-                                    inputString = streamReader.ReadLine();
+                                    {
+
+                                        htmlstring += "<p>" + s.ToString() + "</p>";
+                                        //lbl_JDBC_URL.Text = s.ToString() + "zz";
+                                        inputString = streamReader.ReadLine();
+                                    }
                                 }
+
                             }
-
+                            streamReader1.ReadToEnd();
+                            //}
                         }
-                        streamReader1.ReadToEnd();
-                        //}
+
                     }
 
+                    streamReader.ReadToEnd();
                 }
-
-                streamReader.ReadToEnd();
+                htmlstring += "<hr>";
+               
+                //log file don't exists
+                if (cp_status == "Log file not found!")
+                {
+                    htmlstring += "<p class='mb-0'>*CP Client " + cp_status + "</p>";
+                }
+                else
+                {
+                    htmlstring += "<p class='mb-0'>CP Client is " + cp_status + "  " + cp_log_time + "</p>";
+                }
             }
-            htmlstring += "<hr>";
-            htmlstring += "<p class='mb-0'>CP Client is " + cp_status +"  "+cp_log_time + "</p>";
+            else
+            {
+                //this file don't exists
+                htmlstring += "*CP Client Properties not found!";
+
+                //log file don't exists
+                if (cp_status == "Log file not found!")
+                {
+                    htmlstring += "<p class='mb-0'>*CP Client " + cp_status + "</p>";
+                }
+            }
+
             htmlstring += "</div>";
             htmlstring += "</div>";
             //Append the HTML string to Placeholder.
@@ -130,15 +165,15 @@ namespace Monitoring_Tool.monitoring_pages
         }
 
 
-        private static string getlogdatetime(string servername)
+        private static string getlogdatetime(string servername, string log_path)
         {
             var cp_status = "";
             string inputString;
 
+            string[] paths = { @"\\", servername, log_path};
 
-           // string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "log", "omsi-client.log" };
-
-            string[] paths = { @"\\", servername, "OMSI-Client85", "log", "omsi-client.log" };
+            //string[] paths = { @"\\", servername, "D$", "OMSI-Client85", "logs", "omsi-client.log" };
+            //string[] paths = { @"\\", servername, "OMSI-Client85", "log", "omsi-client.log" };
             string path = Path.Combine(paths);
 
             if (File.Exists(path))
@@ -192,15 +227,16 @@ namespace Monitoring_Tool.monitoring_pages
                     }
                 }
 
-                return cp_status;
+               
             }
             else
             {
                 //this file dont exists
+                cp_status += "CPClient Properties not found!_" + DateTime.Today;
             }
-            
 
-           
+
+            return cp_status;
         }
 
 
@@ -257,8 +293,8 @@ namespace Monitoring_Tool.monitoring_pages
         protected void btncopy_Click(object sender, EventArgs e)
         {
             copyfiles();
-            getlogdatetime("Desktop-gkoflpn");
-            getpostNjdbc_url("Desktop-gkoflpn");
+            //getlogdatetime("Desktop-gkoflpn");
+            //getpostNjdbc_url("Desktop-gkoflpn");
         }
     }
 }
