@@ -17,10 +17,10 @@ namespace Monitoring_Tool.monitoring_pages
         {
             // call and pass servername to read log file and jdbc urls
             //getpostNjdbc_url(serverName , properties path,log path)
-              getpostNjdbc_url("Desktop-gkoflpn", "D$\\OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\logs\\omsi-client.log");
-            //getpostNjdbc_url("totpsps01", "D$\\OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\log\\omsi-client.log");
-            //getpostNjdbc_url("totpsappdev01", "D$\\OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\log\\omsi-client.log"); 
-            //getpostNjdbc_url("totpsapptst01", "D$\\OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\log\\omsi-client.log");
+            //getpostNjdbc_url("Desktop-gkoflpn", "D$\\OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\logs\\omsi-client.log");
+            //getpostNjdbc_url("totpsps01", "OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\log\\omsi-client.log");
+            //getpostNjdbc_url("totpsappdev01", "OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\log\\omsi-client.log"); 
+            getpostNjdbc_url("totpsapptst01", "OMSI-Client85\\ini\\CPClientProperties.ini", "D$\\OMSI-Client85\\log\\omsi-client.log");
 
         }
 
