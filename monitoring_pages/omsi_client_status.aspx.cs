@@ -67,7 +67,6 @@ namespace Monitoring_Tool.monitoring_pages
 
             //html string 
             String htmlstring = "";
-            htmlstring += path;
             htmlstring += "<div class='alert " + alertclass + "' role='alert'>";
             htmlstring += "<h3 class='alert-heading'>OMSI Client Parameters: <mark>\"" + servername + "\"</mark></h3>";
             htmlstring += "<div class='mt-4'>";
