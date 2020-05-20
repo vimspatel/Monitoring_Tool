@@ -264,6 +264,9 @@
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Xml.XPath.XDocument.dll" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\vbc.exe" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\VBCSCompiler.exe" />
+    <Content Include="page-login.html" />
+    <Content Include="Splash_page.aspx" />
+    <Content Include="ui-modals.html" />
     <Content Include="Web.config" />
     <Content Include="HTML\widgets.html" />
   </ItemGroup>
@@ -331,6 +334,13 @@
     </Compile>
     <Compile Include="monitoring_pages\stopped_sp.aspx.designer.cs">
       <DependentUpon>stopped_sp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Splash_page.aspx.cs">
+      <DependentUpon>Splash_page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Splash_page.aspx.designer.cs">
+      <DependentUpon>Splash_page.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

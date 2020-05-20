@@ -446,7 +446,7 @@
                                 <h4 class="modal-title"><strong>Add a category </strong></h4>
                             </div>
                             <div class="modal-body">
-                                <form>
+                        
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="control-label">Category Name</label>
@@ -464,7 +464,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </form>
+                         
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
