@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin.aspx" />
     <Content Include="admin_monitor_sp.aspx" />
     <Content Include="assets\css\cs-skin-elastic.css" />
     <Content Include="assets\css\lib\chosen\chosen-sprite%402x.png" />
@@ -271,6 +272,13 @@
     <Content Include="HTML\widgets.html" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin.aspx.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin.aspx.designer.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin_monitor_sp.aspx.cs">
       <DependentUpon>admin_monitor_sp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

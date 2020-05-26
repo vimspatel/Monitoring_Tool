@@ -143,10 +143,9 @@
                                     <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
-                          Login
-                      </button>
-                            <div class="dropdown for-notification">
+                            <asp:Button ID="btnloginModal" runat="server" Text="Login" CssClass="btn btn-primary mb-1" data-toggle="modal" data-target="#mediumModal" OnClientClick="return false"></asp:Button>
+                            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-secondary mb-1" OnClick="btnLogout_Click" />
+                            <%--<div class="dropdown for-notification">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-bell"></i>
                                     <span class="count bg-danger">3</span>
@@ -212,10 +211,10 @@
                                         </div>
                                     </a>
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
 
-                        <div class="user-area dropdown float-right">
+                        <%--<div class="user-area dropdown float-right">
                             <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="user-avatar rounded-circle" src="../images/admin.jpg" alt="User Avatar">
                             </a>
@@ -227,9 +226,9 @@
 
                                 <a class="nav-link" href="#"><i class="fa fa-cog"></i>Settings</a>
 
-                                <a class="nav-link"><i class="fa fa-power-off"><asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" /></i></a>
+                                <a class="nav-link"><i class="fa fa-power-off"></i>logout</a>
                             </div>
-                        </div>
+                        </div>--%>
 
                     </div>
                 </div>
@@ -294,7 +293,6 @@
         <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -312,10 +310,12 @@
                                     <div class="form-group">
                                         <label>Email address</label>
                                         <asp:TextBox ID="txtUserName" runat="server" class="form-control" placeholder="Email"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rv_txtUserName" ControlToValidate="txtUserName" runat="server" ErrorMessage="Required*" ValidationGroup="vg_login"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
                                         <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" class="form-control" placeholder="Password"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rv_txtPassword" ControlToValidate="txtPassword" runat="server" ErrorMessage="Required*" ValidationGroup="vg_login"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="checkbox">
                                         <label>
@@ -327,8 +327,10 @@
                                         </label>
 
                                     </div>
-                                    <asp:Button ID="btnLogin" runat="server" class="btn btn-success btn-flat m-b-30 m-t-30" Text="Login" OnClick="btnLogin_Click" />
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <asp:Button ID="btnLogin" runat="server" class="btn btn-success btn-flat m-b-30 m-t-30" Text="Login" OnClick="btnLogin_Click" ValidationGroup="vg_login" />
+                                    
+                                    <asp:Button ID="btnlogoutclear" runat="server" Text="Cancel" class="btn btn-secondary" data-dismiss="modal" CssClass="btn btn-secondary" OnClientClick="return false"></asp:Button>
+                            
                                     <div class="register-link m-t-15 text-center">
                                         <p>Don't have account ? <a href="#">Sign Up Here</a></p>
                                     </div>
@@ -337,12 +339,8 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
                 </div>
-               
             </div>
         
 

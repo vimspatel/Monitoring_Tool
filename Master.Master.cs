@@ -14,7 +14,6 @@ namespace Monitoring_Tool
         protected void Page_Load(object sender, EventArgs e)
         {
             lblErrorMessage.Visible = false;
-
             if (!IsPostBack)
             {
                 if(Request.Cookies["username"] !=null && Request.Cookies["password"] != null)
@@ -22,6 +21,17 @@ namespace Monitoring_Tool
                     txtUserName.Text = Request.Cookies["username"].Value;
                     txtPassword.Attributes["value"] = Request.Cookies["password"].Value;
                 }
+            }
+
+            if(Session["username"]!= null)
+            {
+                btnloginModal.Visible = false;
+                btnLogout.Visible = true;
+            }
+            else
+            {
+                btnloginModal.Visible = true;
+                btnLogout.Visible = false;
             }
         }
 
@@ -63,6 +73,8 @@ namespace Monitoring_Tool
 
                     Session["username"] = txtUserName.Text.Trim();
                     Response.Redirect("admin_monitor_sp.aspx");
+
+                    
                 }
                 else { lblErrorMessage.Visible = true; }
             }

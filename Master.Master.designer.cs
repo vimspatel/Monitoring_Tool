@@ -42,6 +42,15 @@ namespace Monitoring_Tool
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
+        /// btnloginModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnloginModal;
+
+        /// <summary>
         /// btnLogout control.
         /// </summary>
         /// <remarks>
@@ -87,6 +96,15 @@ namespace Monitoring_Tool
         protected global::System.Web.UI.WebControls.TextBox txtUserName;
 
         /// <summary>
+        /// rv_txtUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rv_txtUserName;
+
+        /// <summary>
         /// txtPassword control.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,15 @@ namespace Monitoring_Tool
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
+
+        /// <summary>
+        /// rv_txtPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rv_txtPassword;
 
         /// <summary>
         /// Chk_rememberme control.
@@ -112,6 +139,15 @@ namespace Monitoring_Tool
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogin;
+
+        /// <summary>
+        /// btnlogoutclear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnlogoutclear;
 
         /// <summary>
         /// lblErrorMessage control.

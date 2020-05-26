@@ -10,14 +10,14 @@ using System.Data.SqlClient;
 
 namespace Monitoring_Tool
 {
-    public partial class admin_monitor_sp : System.Web.UI.Page
+    public partial class admin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
                 this.BindGrid_server_list();
-                this.BindGrid_Env_Detail();
+                this.BindGrid_logins();
                 this.BindGrid_Service_List();
                 this.BindGrid_Process_List();
                 this.BindGrid_Env_List_Service();
@@ -26,20 +26,16 @@ namespace Monitoring_Tool
         }
 
 
-        protected void btnUpdate_Env_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
-        private void BindGrid_Env_Detail()
+        private void BindGrid_logins()
         {
             string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "SP_MASTER_INSERT_UPDATE_DELETE_Env";
+                cmd.CommandText = "SP_MASTER_INSERT_UPDATE_DELETE_LOGINS";
                 cmd.Parameters.AddWithValue("@StatementType", "Select");
 
                 {
@@ -50,17 +46,36 @@ namespace Monitoring_Tool
                         using (DataTable dt = new DataTable())
                         {
                             sda.Fill(dt);
-                            gv_env_detail.EmptyDataText = "All Services Are Running!!";
-                            gv_env_detail.DataSource = dt;
-                            gv_env_detail.DataBind();
+                            gv_logins.EmptyDataText = "No User found!!";
+                            gv_logins.DataSource = dt;
+                            gv_logins.DataBind();
                         }
                     }
                 }
             }
         }
 
+        private void BindGrid_Role_List()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select Role_ID, Role_Name FROM VP_Role"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
+                    con.Open();
+                    ddl_Role_List.DataSource = cmd.ExecuteReader();
+                    ddl_Role_List.DataTextField = "Role_Name";
+                    ddl_Role_List.DataValueField = "Role_ID";
+                    ddl_Role_List.DataBind();
+                    con.Close();
+                }
+            }
+            ddl_Role_List.Items.Insert(0, new ListItem("--Select--", "0"));
+        }
         /// <summary>
-        /// Insert Env Detail
+        /// Insert User
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -475,8 +490,6 @@ namespace Monitoring_Tool
         protected void btnClear_Service_list_Click(object sender, EventArgs e)
         {
             clearservicelist();
-            gv_service.EditIndex = -1;
-            this.BindGrid_Service_List();
         }
 
         protected void clearservicelist()
@@ -717,8 +730,6 @@ namespace Monitoring_Tool
         protected void btnClear_Process_list_Click(object sender, EventArgs e)
         {
             clearprocesslist();
-            gv_process.EditIndex = -1;
-            this.BindGrid_Process_List();
         }
 
         protected void clearprocesslist()
@@ -926,9 +937,7 @@ namespace Monitoring_Tool
 
         protected void btnCancel_Server_Click(object sender, EventArgs e)
         {
-            clearserver_detail();
-            gv_server_detail.EditIndex = -1;
-            this.BindGrid_server_list();
+            clearEnv_detail();
         }
 
         protected void clearserver_detail()
@@ -938,6 +947,5 @@ namespace Monitoring_Tool
             chkAdd_Server_Active_Flag.SelectedValue = "";
 
         }
-
     }
 }
