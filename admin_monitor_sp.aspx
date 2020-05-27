@@ -56,7 +56,7 @@
                                         <strong class="card-title">Environment</strong>
                                     </div>
                                     <div class="card-body">
-                                        <asp:GridView ID="gv_env_detail" runat="server" AutoGenerateColumns="false" OnRowDataBound="gv_env_detail_RowDataBound" CssClass="mytable table table-striped table-bordered"
+                                        <asp:GridView ID="gv_env_detail" runat="server" AutoGenerateColumns="false" OnRowDataBound="gv_env_detail_RowDataBound" CssClass="mytable table table-striped table-bordered table-responsive-md"
                                             DataKeyNames="Env_ID" OnRowEditing="gv_env_detail_RowEditing" OnRowCancelingEdit="gv_env_detail_RowCancelingEdit" PageSize="5" AllowPaging="true" OnPageIndexChanging="gv_env_detail_PageIndexChanging"
                                             OnRowUpdating="gv_env_detail_RowUpdating" OnRowDeleting="gv_env_detail_RowDeleting" EmptyDataText="No records has been added.">
                                             <Columns>
