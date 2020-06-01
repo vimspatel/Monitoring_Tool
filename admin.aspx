@@ -34,13 +34,7 @@
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-logins" role="tab">Logins</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="pills-service-tab" data-toggle="pill" href="#pills-service" role="tab">Services</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-process-tab" data-toggle="pill" href="#pills-process" role="tab">Process</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-server-tab" data-toggle="pill" href="#pills-server" role="tab">Servers</a>
+                <a class="nav-link" id="pills-service-tab" data-toggle="pill" href="#pills-roles" role="tab">Roles</a>
             </li>
         </ul>
     </div>
