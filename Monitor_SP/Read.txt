@@ -1,0 +1,22 @@
+<#---#>
+https://www.sconstantinou.com/powershell-remoting/
+
+
+
+#######  Enable-PSRemoting #####################
+#######  Allow remote access on clients: #######
+
+Enable-PSRemoting -SkipNetworkProfileCheck -Force
+Set-NetFirewallRule -Name "WINRM-HTTP-In-TCP" -RemoteAddress Any
+
+#######  Disable-PSRemoting #####################
+
+Disable-PSRemoting -Force
+
+
+
+<--- PS Remoting uses either HTTP or HTTPS 
+
+If you are internally using HTTP then your not going to have any security issues. 
+
+However, If you want to do it remotely off site then configure for HTTPS --->

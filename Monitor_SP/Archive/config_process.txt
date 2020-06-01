@@ -1,0 +1,2 @@
+#VARIABLE#REPORT_TITLE,PeopleSoft Process Scheduler Status
+PeopleSoft Application Server (FNDEV),Totpsappdev01,BBL333.EXE,DADA
