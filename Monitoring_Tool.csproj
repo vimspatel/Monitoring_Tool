@@ -267,6 +267,7 @@
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\VBCSCompiler.exe" />
     <Content Include="page-login.html" />
     <Content Include="Splash_page.aspx" />
+    <Content Include="sqlperf_vp_script.sql" />
     <Content Include="ui-modals.html" />
     <Content Include="Web.config" />
     <Content Include="HTML\widgets.html" />
