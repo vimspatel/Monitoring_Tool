@@ -51,7 +51,7 @@ namespace Monitoring_Tool
             using (SqlConnection sqlCon = new SqlConnection(constr))
             {
                 sqlCon.Open();
-                string query = "SELECT COUNT(1) FROM VP_User WHERE username=@username AND password=@password";
+                string query = "SELECT COUNT(1) FROM VP_Users WHERE username=@username AND password=@password";
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
                 sqlCmd.Parameters.AddWithValue("@username", txtUserName.Text.Trim());
                 sqlCmd.Parameters.AddWithValue("@password", txtPassword.Text.Trim());
